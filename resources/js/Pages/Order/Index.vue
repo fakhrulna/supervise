@@ -98,6 +98,12 @@
                                 </div>
                                 </div>
                             </div>
+                            <div class="hs-dropdown [--placement:bottom-right] relative inline-block" data-hs-dropdown-auto-close="inside">
+                                <button @click="openModal" id="hs-as-table-table-filter-dropdown" type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+                                <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg>
+                                Add Item
+                                </button>
+                            </div>
                             </div>
                         </div>
                         </div>
@@ -166,7 +172,7 @@
                         </thead>
 
                         <tbody class="divide-y divide-gray-200">
-                        <tr class="bg-white hover:bg-gray-50">
+                        <tr v-for="item in orderList" :key="item.id" class="bg-white hover:bg-gray-50">
                             <td class="size-px whitespace-nowrap align-top">
                             <a class="block p-6" href="#">
                                 <span class="text-sm text-gray-600">1</span>
@@ -175,152 +181,36 @@
                             <td class="size-px whitespace-nowrap align-top">
                             <a class="block p-6" href="#">
                                 <div class="flex items-center gap-x-4">
-                                <img class="shrink-0 size-[38px] rounded-lg" src="https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80" alt="Product Image">
+                                <!-- <img class="shrink-0 size-[38px] rounded-lg" src="https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80" alt="Product Image"> -->
                                 <div>
-                                    <span class="block text-sm font-semibold text-gray-800">Brown Hat</span>
+                                    <span class="block text-sm font-semibold text-gray-800">Kek Batik</span>
                                 </div>
                                 </div>
                             </a>
                             </td>
                             <td class="size-px whitespace-nowrap align-top text-center">
                             <a class="block p-6" href="#">
-                                <span class="text-sm text-gray-600">1</span>
-                            </a>
-                            </td>
-                            <td class="size-px whitespace-nowrap align-top">
-                            <a class="block p-6" href="#">
-                                <div class="flex items-center gap-x-3">
-                                <div class="grow">
-                                    <span class="block text-sm font-semibold text-gray-800">Christina Bersh</span>
-                                    <span class="block text-sm text-gray-500">christina@site.com</span>
-                                </div>
-                                </div>
-                            </a>
-                            </td>
-                            <td class="size-px whitespace-nowrap align-top">
-                            <a class="block p-6" href="#">
-                                <span class="block text-sm text-gray-500">Delivery</span>
-                            </a>
-                            </td>
-                            <td class="size-px whitespace-nowrap align-top">
-                            <a class="block p-6" href="#">
-                                <span class="text-sm text-gray-600">10 Jan 2022</span>
-                            </a>
-                            </td>
-                            <td class="size-px whitespace-nowrap align-top">
-                            <a class="block p-6" href="#">
-                                <span class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-teal-100 text-teal-800 rounded-full">
-                                <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                                </svg>
-                                Published
-                                </span>
-                            </a>
-                            </td>
-                        </tr>
-
-                        <tr class="bg-white hover:bg-gray-50">
-                            <td class="size-px whitespace-nowrap align-top">
-                            <a class="block p-6" href="#">
-                                <span class="text-sm text-gray-600">2</span>
-                            </a>
-                            </td>
-                            <td class="size-px whitespace-nowrap align-top">
-                            <a class="block p-6" href="#">
-                                <div class="flex items-center gap-x-4">
-                                <img class="shrink-0 size-[38px] rounded-lg" src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80" alt="Product Image">
-                                <div>
-                                    <span class="block text-sm font-semibold text-gray-800">Calvin Klein T-shirts</span>
-                                </div>
-                                </div>
+                                <span class="text-sm text-gray-600">{{ item.quantity }}</span>
                             </a>
                             </td>
                             <td class="size-px whitespace-nowrap align-top text-center">
                             <a class="block p-6" href="#">
-                                <span class="text-sm text-gray-600">1</span>
+                                <span class="text-sm text-gray-600">{{ item.customer_name }}</span>
                             </a>
                             </td>
                             <td class="size-px whitespace-nowrap align-top">
                             <a class="block p-6" href="#">
-                                <div class="flex items-center gap-x-3">
-                                <div class="grow">
-                                    <span class="block text-sm font-semibold text-gray-800">David Harrison</span>
-                                    <span class="block text-sm text-gray-500">david@site.com</span>
-                                </div>
-                                </div>
+                                <span class="text-sm text-gray-600">{{ item.status }}</span>
                             </a>
                             </td>
                             <td class="size-px whitespace-nowrap align-top">
                             <a class="block p-6" href="#">
-                                <span class="block text-sm text-gray-500">Pickup</span>
+                                <span class="text-sm text-gray-600">{{ formatDate(item.created_at) }}</span>
                             </a>
                             </td>
                             <td class="size-px whitespace-nowrap align-top">
                             <a class="block p-6" href="#">
-                                <span class="text-sm text-gray-600">04 Aug 2020</span>
-                            </a>
-                            </td>
-                            <td class="size-px whitespace-nowrap align-top">
-                            <a class="block p-6" href="#">
-                                <span class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">
-                                <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                                </svg>
-                                Rejected
-                                </span>
-                            </a>
-                            </td>
-                        </tr>
-
-                        <tr class="bg-white hover:bg-gray-50">
-                            <td class="size-px whitespace-nowrap align-top">
-                            <a class="block p-6" href="#">
-                                <span class="text-sm text-gray-600">3</span>
-                            </a>
-                            </td>
-                            <td class="size-px whitespace-nowrap align-top">
-                            <a class="block p-6" href="#">
-                                <div class="flex items-center gap-x-4">
-                                <img class="shrink-0 size-[38px] rounded-lg" src="https://images.unsplash.com/photo-1626947346165-4c2288dadc2a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=320&q=80" alt="Product Image">
-                                <div>
-                                    <span class="block text-sm font-semibold text-gray-800">Clarks shoes</span>
-                                </div>
-                                </div>
-                            </a>
-                            </td>
-                            <td class="size-px whitespace-nowrap align-top text-center">
-                            <a class="block p-6" href="#">
-                                <span class="text-sm text-gray-600">1</span>
-                            </a>
-                            </td>
-                            <td class="size-px whitespace-nowrap align-top">
-                            <a class="block p-6" href="#">
-                                <div class="flex items-center gap-x-3">
-                                <div class="grow">
-                                    <span class="block text-sm font-semibold text-gray-800">Anne Richard</span>
-                                    <span class="block text-sm text-gray-500">anne@site.com</span>
-                                </div>
-                                </div>
-                            </a>
-                            </td>
-                            <td class="size-px whitespace-nowrap align-top">
-                            <a class="block p-6" href="#">
-                                <span class="block text-sm text-gray-500">Delivery</span>
-                            </a>
-                            </td>
-                            <td class="size-px whitespace-nowrap align-top">
-                            <a class="block p-6" href="#">
-                                <span class="text-sm text-gray-600">June 18 2022</span>
-                            </a>
-                            </td>
-                            <td class="size-px whitespace-nowrap align-top">
-                            <a class="block p-6" href="#">
-                                <span class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-teal-100 text-teal-800 rounded-full">
-                                <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                                </svg>
-                                Published
-                                </span>
+                                <span class="text-sm text-gray-600">{{ formatDate(item.created_at) }}</span>
                             </a>
                             </td>
                         </tr>
@@ -363,5 +253,70 @@
             <!-- End Card -->
         </div>
         <!-- End Table Section -->
+      <AddForm :isOpen="isModalOpen" @close="closeModal" @save="handleSave" ref="addForm" />
     </MainLayout>
 </template>
+
+<script>
+import { useForm } from '@inertiajs/vue3';
+import AddForm from './AddForm.vue';
+import { format } from 'date-fns';
+
+export default {
+  components: {
+    AddForm,
+  },
+  props: {
+    orders: {
+      type: Array,
+    },
+  },
+  data() {
+    return {
+      isModalOpen: false,
+      order: [],
+      orderList: this.orders,
+    };
+  },
+  mounted() {
+    console.log("Order from Laravel:", this.orders);
+  },
+  methods: {
+    formatDate(date) {
+      return date ? format(new Date(date), "dd MMM yyyy") : "No date";
+    },
+    openModal() {
+        this.isModalOpen = true;
+    },
+    closeModal(form) {
+        form.clearErrors();
+        form.reset();
+        this.isModalOpen = false;
+    },
+    handleSave(newData) {
+      console.log("New Data Submitted:", newData);
+      newData.post(route('api-order.store'), {
+        onSuccess: () => {
+            newData.reset(),
+            this.closeModal();
+        },
+        onError: (errors) => {
+            // Log the errors to the console
+            console.error('Errors:', errors);
+
+            // Pass the errors back to the modal component
+            this.$refs.addForm.setErrors(errors);
+
+            // Optionally, throw an error or handle it
+            // if (errors.message) {
+            // throw new Error(errors.message); // Throw a custom error
+            // }
+
+            // Display a generic error message to the user
+            // alert('An error occurred. Please check the form and try again.');
+        },
+        });
+    },
+  },
+};
+</script>

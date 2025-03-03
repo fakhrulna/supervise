@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -25,17 +27,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
-
-Route::prefix('order')->group(function () {
-    Route::get('/index', function () {
-        return Inertia::render('Order/Index');
-    })->name('order.index');
+Route::prefix('order')->group(function () { 
+    Route::get('/index', [OrderController::class, 'index'])->name('order.index');
 });
 
 Route::prefix('inventory')->group(function () {
-    Route::get('/index', function () {
-        return Inertia::render('Inventory/Index');
-    })->name('inventory.index');
-    Route::post('/store', [InventoryController::class, 'store'])->name('inventory.store');
+    Route::get('/index', [InventoryController::class, 'index'])->name('inventory.index');
 });
+
+Route::prefix('menu')->group(function () {
+    Route::get('/index', [MenuController::class, 'index'])->name('menu.index');
+});
+
+require __DIR__.'/auth.php';
+require __DIR__.'/api.php';

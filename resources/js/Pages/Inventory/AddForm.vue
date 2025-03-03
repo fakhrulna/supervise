@@ -1,7 +1,12 @@
 <template>
     <Modal :show="isOpen" @close="close" :maxWidth="'sm'">
+        <div class="flex items-center border-b p-4">
+            <h3 class="text-lg font-semibold">
+                Add Inventory
+            </h3>
+        </div>
         <div class="p-6">
-            <div class="mt-6">
+            <div>
                 <InputLabel
                     for="name"
                     value="Name"
@@ -30,7 +35,7 @@
                         id="price"
                         ref="priceInput"
                         v-model="form.price"
-                        type="text"
+                        type="number"
                         class="mt-1 block w-full"
                         placeholder="Price"
                     />
@@ -39,6 +44,27 @@
                 </div>
                 
                 <div class="w-1/2 pl-2">
+                <!-- <div class="mt-6"> -->
+                    <InputLabel
+                        for="expiry"
+                        value="Expiry"
+                    />
+
+                    <TextInput
+                        id="expiry"
+                        ref="expiryInput"
+                        v-model="form.expiry_date"
+                        type="date"
+                        class="mt-1 block w-full"
+                        placeholder="Expiry"
+                    />
+
+                    <InputError :message="form.errors.expiry_date" class="mt-2" />
+                </div>
+            </div>
+
+            <div class="mt-6 flex justify-between">
+                <div class="w-1/2 pr-2">
                     <InputLabel
                         for="quantity"
                         value="Quantity"
@@ -48,34 +74,34 @@
                         id="quantity"
                         ref="quantityInput"
                         v-model="form.quantity"
-                        type="text"
+                        type="number"
                         class="mt-1 block w-full"
                         placeholder="Quantity"
                     />
 
                     <InputError :message="form.errors.quantity" class="mt-2" />
                 </div>
+                
+                <div class="w-1/2 pl-2">
+                    <InputLabel
+                        for="unit"
+                        value="Unit"
+                    />
+
+                    <TextInput
+                        id="unit"
+                        ref="unitInput"
+                        v-model="form.unit"
+                        type="text"
+                        class="mt-1 block w-full"
+                        placeholder="Unit"
+                    />
+
+                    <InputError :message="form.errors.unit" class="mt-2" />
+                </div>
             </div>
 
-            <div class="mt-6">
-                <InputLabel
-                    for="store"
-                    value="Store"
-                />
-
-                <TextInput
-                    id="store"
-                    ref="storeInput"
-                    v-model="form.store_name"
-                    type="text"
-                    class="mt-1 block w-3/4"
-                    placeholder="Store"
-                />
-
-                <InputError :message="form.errors.store_name" class="mt-2" />
-            </div>
-
-            <div class="mt-6">
+            <!-- <div class="mt-6">
                 <InputLabel
                     for="expiry"
                     value="Expiry"
@@ -85,35 +111,53 @@
                     id="expiry"
                     ref="expiryInput"
                     v-model="form.expiry_date"
-                    type="text"
-                    class="mt-1 block w-3/4"
+                    type="date"
+                    class="mt-1 block w-full"
                     placeholder="Expiry"
                 />
 
                 <InputError :message="form.errors.expiry_date" class="mt-2" />
+            </div> -->
+
+            <div class="mt-6">
+                <InputLabel
+                    for="store"
+                    value="Store Name"
+                />
+
+                <TextInput
+                    id="store"
+                    ref="storeInput"
+                    v-model="form.store_name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    placeholder="Store"
+                />
+
+                <InputError :message="form.errors.store_name" class="mt-2" />
             </div>
 
             <div class="mt-6">
                 <InputLabel
                     for="date"
-                    value="Date"
+                    value="Stock in Date"
                 />
 
                 <TextInput
                     id="date"
                     ref="dateInput"
-                    v-model="form.date"
-                    type="text"
-                    class="mt-1 block w-3/4"
+                    v-model="form.created_by"
+                    type="date"
+                    class="mt-1 block w-full"
                     placeholder="Date"
                 />
 
-                <InputError :message="form.errors.date" class="mt-2" />
+                <InputError :message="form.errors.created_by" class="mt-2" />
             </div>
 
             <div class="mt-6 flex justify-end">
                 <SecondaryButton @click="close">Cancel</SecondaryButton>
-                <PrimaryButton type="submit" :disabled="form.processing">Save</PrimaryButton>
+                <PrimaryButton @click="submit" class="ml-2">Save</PrimaryButton>
             </div>
         </div>
     </Modal>
@@ -134,19 +178,23 @@ export default {
             form: useForm({
                 name: '',
                 quantity: '',
-                date: '',
+                created_by: '',
                 expiry_date: '',
                 price: '',
                 store_name: '',
+                unit: '',
             }),
         };
     },
     methods: {
         close() {
-            this.$emit('close');
+            this.$emit('close', this.form);
         },
         submit() {
             this.$emit('save', this.form);
+        },
+        setErrors(errors) {
+            this.form.errors = errors;
         },
     },
 };

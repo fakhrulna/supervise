@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Inventory extends Model
+class Ingredient extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class Inventory extends Model
      *
      * @var string
      */
-    protected $table = 'inventory';
+    protected $table = 'ingredient';
 
     /**
      * The primary key associated with the table.
@@ -26,15 +26,11 @@ class Inventory extends Model
     protected $fillable = [
         'name',
         'quantity',
-        'price',
         'unit',
-        'expiry_date',
-        'buy_date',
-        'store_name'
+        'menu_id',
     ];
 
     protected $casts = [
-        'expiry_date' => 'datetime',
-        'buy_date' => 'datetime'
+        'created_at' => 'datetime'
     ];
 }

@@ -4,7 +4,7 @@
 
   <!-- ========== MAIN CONTENT ========== -->
   <!-- Breadcrumb -->
-  <div class="sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 lg:px-8 lg:hidden">
+  <div class="sticky top-0 inset-x-0 z-20 bg-gray-200 border-y px-4 sm:px-6 lg:px-8 lg:hidden">
     <div class="flex items-center py-2">
       <!-- Navigation Toggle -->
       <button type="button" class="size-8 flex justify-center items-center gap-x-2 border border-gray-200 text-gray-800 hover:text-gray-500 rounded-lg focus:outline-none focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-application-sidebar" aria-label="Toggle navigation" data-hs-overlay="#hs-application-sidebar">
@@ -36,7 +36,7 @@
   <SidebarLayout/>
   <!-- Content -->
   <div class="w-full lg:ps-64">
-    <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
+    <div class="p-4 sm:p-6 space-y-4 sm:space-y-6 drop-shadow-sm ">
       <slot/>
     </div>
   </div>
